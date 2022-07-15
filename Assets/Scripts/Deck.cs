@@ -12,17 +12,17 @@ public class Deck : MonoBehaviour
         
     }
 
-    // 眔计よΑ
+    // 眔汲礟计よΑ
     void GetCardValues()
     {
         int Num = 0;
 
-        // ノ癹伴だ皌倒计
+        // ノ癹伴だ皌倒汲礟计
         for (int i = 0; i < cardSprites.Length; i++)
         {
             Num = i;
 
-            // 璸计计秖 (52)
+            // 璸计汲礟计秖 (52)
             Num %= 13;
 
             // 狦 x/13 ぇΤ緇计玥緇计
@@ -59,5 +59,10 @@ public class Deck : MonoBehaviour
     {
         // cardScript.SetSprite
         return 0;
+    }
+
+    public Sprite GetCardBack()
+    {
+        return cardSprites[0];
     }
 }
