@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // 撲克牌的值判斷，例：梅花2的值等同於2
+    public int value = 0;
+
+    public int GetValueOfCard()
     {
-        
+        return value;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetValue(int newValue)
     {
-        
+        value = newValue;
     }
 }
