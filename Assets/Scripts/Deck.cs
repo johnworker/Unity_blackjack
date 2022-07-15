@@ -54,4 +54,10 @@ public class Deck : MonoBehaviour
             cardValues[j] = value;
         }
     }
+
+    public int DealCard()
+    {
+        // cardScript.SetSprite
+        return 0;
+    }
 }
