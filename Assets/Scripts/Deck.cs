@@ -55,10 +55,11 @@ public class Deck : MonoBehaviour
         }
     }
 
-    public int DealCard()
+    public int DealCard(Card card)
     {
-        // cardScript.SetSprite
-        return 0;
+        card.SetSprite(cardSprites[currentIndex]);
+        card.SetValue(cardValues[currentIndex++]);
+        return card.GetValueOfCard();
     }
 
     public Sprite GetCardBack()
