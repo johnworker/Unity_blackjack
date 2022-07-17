@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
 
     // 投注金錢
     private int money = 1000;
+
+    // 桌子上的卡片物件數組
+    public GameObject[] hand;
     void Start()
     {
         
