@@ -58,7 +58,8 @@ public class Deck : MonoBehaviour
     public int DealCard(Card card)
     {
         card.SetSprite(cardSprites[currentIndex]);
-        card.SetValue(cardValues[currentIndex++]);
+        card.SetValue(cardValues[currentIndex]);
+        currentIndex++;
         return card.GetValueOfCard();
     }
 
