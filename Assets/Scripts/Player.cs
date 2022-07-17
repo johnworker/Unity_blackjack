@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
 
     // 桌子上的卡片物件數組
     public GameObject[] hand;
+
+    // 下一張要翻牌的索引
+    public int cardIndex = 0;
+    public int aceCount = 0;
     void Start()
     {
         
