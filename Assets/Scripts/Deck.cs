@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class Deck : MonoBehaviour
@@ -9,7 +10,7 @@ public class Deck : MonoBehaviour
     int currentIndex = 0;
     void Start()
     {
-        
+        GetCardValues();
     }
 
     // 取得撲克牌數值的方式

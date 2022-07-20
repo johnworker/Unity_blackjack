@@ -567,9 +567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1619750d44f95da478c0d9333aa58355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardScript: {fileID: 248202679}
+  cardScript: {fileID: 115417481}
   deckScript: {fileID: 1155825764}
-  handValue: 0
+  handValue: 2
   hand:
   - {fileID: 248202676}
   - {fileID: 1592579332}
