@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         }
 
         // 檢查我們是否應該使用 11 而不是 1
-        // AceCheck();
+        // 王牌確認
         cardIndex++;
         return handValue;
     }
