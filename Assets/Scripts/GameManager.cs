@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     public Button standBtn;
     public Button betBtn;
 
+    // 訪問玩家和莊家的腳本
+    public Player playerScript;
+    public Player dealerScript;
+
     void Start()
     {
         // 增加點擊按鈕 (監聽器 AddListener)
@@ -24,7 +28,7 @@ public class GameManager : MonoBehaviour
     #region 遊戲進行派牌函式
     private void DealClicked()
     {
-        throw new NotImplementedException();
+        playerScript.StartHand();
     }
 
     private void HitClicked()

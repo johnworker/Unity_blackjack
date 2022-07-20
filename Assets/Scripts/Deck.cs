@@ -55,7 +55,7 @@ public class Deck : MonoBehaviour
         }
     }
 
-    public int DealCard(Card card)
+    public int DealCard(CardScript card)
     {
         card.SetSprite(cardSprites[currentIndex]);
         card.SetValue(cardValues[currentIndex]);
