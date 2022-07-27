@@ -1817,7 +1817,7 @@ GameObject:
   - component: {fileID: 666125149}
   - component: {fileID: 666125148}
   m_Layer: 5
-  m_Name: HandText
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1952,7 +1952,7 @@ GameObject:
   - component: {fileID: 680069479}
   - component: {fileID: 680069478}
   m_Layer: 5
-  m_Name: CashText (1)
+  m_Name: DealerScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2525,9 +2525,14 @@ MonoBehaviour:
   hitBtn: {fileID: 1435745172}
   standBtn: {fileID: 716058025}
   betBtn: {fileID: 1088338278}
-  standBtnText: {fileID: 0}
   playerScript: {fileID: 1949041560}
   dealerScript: {fileID: 425315112}
+  scoreText: {fileID: 0}
+  dealerScoreText: {fileID: 0}
+  betsText: {fileID: 0}
+  cashText: {fileID: 0}
+  standBtnText: {fileID: 0}
+  hideCard: {fileID: 0}
 --- !u!1 &1088338276
 GameObject:
   m_ObjectHideFlags: 0

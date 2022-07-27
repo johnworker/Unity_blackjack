@@ -50,4 +50,38 @@ public class Player : MonoBehaviour
         cardIndex++;
         return handValue;
     }
+
+    //搜索所需的 卡牌 轉換，1 到 11 反之亦然
+    public void AceCheck()
+    {
+        foreach(CardScript ace in aceList)
+        {
+            // 對於列表中的每個卡牌檢查
+            if (handValue + 10 < 22 && ace.GetValueOfCard() == 1)
+            {
+                // 如果轉換，調整卡對象值和手
+                ace.SetValue(11);
+                handValue += 10;
+            }
+
+            else if(handValue > 21 && ace.GetValueOfCard() == 11)
+            {
+                // 如果轉換，調整遊戲對象值和手上的值
+                ace.SetValue(1);
+                handValue -= 10;
+            }
+        }
+    }
+
+    // 加或減錢，投注
+    public void AdjectMoney(int amount)
+    {
+        money += amount;
+    }
+
+    // 輸出玩家當前金額
+    public int Getmoney()
+    {
+        return money;
+    }
 }
