@@ -12,12 +12,25 @@ public class GameManager : MonoBehaviour
     public Button hitBtn;
     public Button standBtn;
     public Button betBtn;
-    public Text standBtnText;
     private int standClicks = 0;
 
     // 訪問玩家和莊家的腳本
     public Player playerScript;
     public Player dealerScript;
+
+
+    // 公開訪問和更新的 文字 顯示器
+    public Text scoreText;
+    public Text dealerScoreText;
+    public Text betsText;
+    public Text cashText;
+    // 公開 Text 主要文字
+    public Text standBtnText;
+
+    // 隱藏莊家第二張牌
+    public GameObject hideCard;
+    // 有多少賭本
+    int pot = 0;
 
     void Start()
     {
