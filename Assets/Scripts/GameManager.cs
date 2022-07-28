@@ -95,6 +95,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // 檢查輸或贏，手牌的值超過
+    void RoundOver()
+    {
+        // 布林值 (是/否) 爆牌 和 黑傑克/21
+        bool playerBust = playerScript.handValue > 21;
+        bool dealerBust = dealerScript.handValue > 21;
+        bool player21 = playerScript.handValue == 21;
+        bool dealer21 = dealerScript.handValue == 21;
+
+        // 如果經過被點擊的次數少於兩次，沒有 21點 或 爆牌，退出功能
+        if (standClicks < 2 && !playerBust && !dealerBust && !player21 && !dealer21) return;
+        bool roundOver = true;
+        if(playerBust && dealerBust)
+        {
+            
+        }
+    }
+
     #endregion
 }
 
