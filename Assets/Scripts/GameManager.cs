@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         // 玩家腳本.調整金幣(-20);
         // cashText.text = playerScript.GetMoney().Tostring();
     }
-}
+
 
     private void HitClicked()
     {
@@ -97,3 +97,4 @@ public class GameManager : MonoBehaviour
 
     #endregion
 }
+
