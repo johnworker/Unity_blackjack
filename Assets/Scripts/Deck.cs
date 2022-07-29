@@ -36,6 +36,7 @@ public class Deck : MonoBehaviour
             cardValues[i] = Num++;
         }
 
+
     }
 
     public void shuffle()
