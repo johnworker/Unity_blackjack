@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
     }
 
     // 輸出玩家當前金額
-    public int Getmoney()
+    public int GetMoney()
     {
         return money;
     }

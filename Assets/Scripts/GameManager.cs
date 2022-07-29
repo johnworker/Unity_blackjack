@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
 
         betsText.text = "Bets: $" + pot.ToString();
         playerScript.AdjustMoney(-20);
-        cashText.text = "$" + playerScript.Getmoney().ToString();
+        cashText.text = "$" + playerScript.GetMoney().ToString();
     }
 
 
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
             mainText.gameObject.SetActive(true);
             dealerScoreText.gameObject.SetActive(true);
             hideCard.GetComponent<Renderer>().enabled = false;
-            cashText.text = "$" + playerScript.Getmoney().ToString();
+            cashText.text = "$" + playerScript.GetMoney().ToString();
             standClicks = 0;
         }
     }
@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
         Text newBtn = betBtn.GetComponentInChildren(typeof(Text)) as Text;
         int intBet = int.Parse(newBtn.text.ToString().Remove(0, 1));
         playerScript.AdjustMoney(-intBet);
-        cashText.text = "$" + playerScript.Getmoney().ToString();
+        cashText.text = "$" + playerScript.GetMoney().ToString();
         pot += (intBet * 2);
         betsText.text = "Bets: $" + pot.ToString();
     }
