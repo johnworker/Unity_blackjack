@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     private void DealClicked()
     {
         // 在發牌開始時隱藏發放手牌積分
+        mainText.gameObject.SetActive(false);
         dealerScoreText.gameObject.SetActive(false);
         GameObject.Find("Deck").GetComponent<Deck>().shuffle();
         playerScript.StartHand();
@@ -54,6 +55,8 @@ public class GameManager : MonoBehaviour
         // 更新顯示的分數
         scoreText.text ="Hand:" + playerScript.handValue.ToString();
         dealerScoreText.text = "Hand:" + dealerScript.handValue.ToString();
+        // 啟用隱藏莊家的其中一張牌
+        hideCard.GetComponent<Renderer>().enabled = true;
         // 調整按鈕能見度
         dealBtn.gameObject.SetActive(false);
         hitBtn.gameObject.SetActive(true);
@@ -75,13 +78,15 @@ public class GameManager : MonoBehaviour
         if (playerScript.GetCard() <= 10)
         {
             playerScript.GetCard();
+            scoreText.text = "Hand: " + playerScript.handValue.ToString();
+            if (playerScript.handValue > 20) RoundOver();
         }
     }
 
     private void StandClicked()
     {
         standClicks++;
-        if (standClicks > 1) Debug.Log("end function");
+        if (standClicks > 1) RoundOver();
         HitDealer();
         standBtnText.text = "Call";
     }
@@ -92,6 +97,8 @@ public class GameManager : MonoBehaviour
         {
             dealerScript.GetCard();
             // 莊家分數
+            dealerScoreText.text = "Hand: " + dealerScript.handValue.ToString();
+            if (dealerScript.handValue > 20) RoundOver();
         }
     }
 
@@ -116,7 +123,7 @@ public class GameManager : MonoBehaviour
         }
 
         // 如果玩家爆牌，莊家沒爆牌 或 如果莊家點數多於玩家 則莊家贏
-        else if(playerBust || dealerScript.handValue > playerScript.handValue)
+        else if(playerBust || (!dealerBust && dealerScript.handValue > playerScript.handValue))
         {
             mainText.text = "Dealer Wins";
         }
@@ -129,6 +136,29 @@ public class GameManager : MonoBehaviour
         }
 
         // 檢查是否平局，歸還賭本
+        else if(playerScript.handValue == dealerScript.handValue)
+        {
+            mainText.text = "Push: Bets returned";
+            playerScript.AdjectMoney(pot / 2);
+        }
+
+        else
+        {
+            roundOver = false;
+        }
+
+        // 為下一步設置 ui / 手中 / 翻轉
+        if (roundOver)
+        {
+            hitBtn.gameObject.SetActive(false);
+            standBtn.gameObject.SetActive(false);
+            dealBtn.gameObject.SetActive(true);
+            mainText.gameObject.SetActive(true);
+            dealerScoreText.gameObject.SetActive(true);
+            hideCard.GetComponent<Renderer>().enabled = false;
+            cashText.text = playerScript.Getmoney().ToString();
+            standClicks = 0;
+        }
     }
 
     #endregion

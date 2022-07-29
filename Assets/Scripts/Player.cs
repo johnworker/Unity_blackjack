@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         }
 
         // 檢查我們是否應該使用 11 而不是 1
-        // 王牌確認
+        AceCheck();
         cardIndex++;
         return handValue;
     }
@@ -84,4 +84,19 @@ public class Player : MonoBehaviour
     {
         return money;
     }
+
+    // 隱藏所有撲克牌，重置所需的變量
+    public void ResetHand()
+    {
+        for (int i = 0; i < hand.Length; i++)
+        {
+            hand[i].GetComponent<CardScript>().ResetCard();
+            hand[i].GetComponent<Renderer>().enabled = false;
+        }
+
+        cardIndex = 0;
+        handValue = 0;
+        aceList = new List<CardScript>();
+    }
+
 }
