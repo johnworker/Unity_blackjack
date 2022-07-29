@@ -36,8 +36,6 @@ public class Deck : MonoBehaviour
             cardValues[i] = Num++;
         }
 
-        // (currentIndex 就是當前索引)
-        currentIndex = 1;
     }
 
     public void shuffle()
@@ -54,6 +52,10 @@ public class Deck : MonoBehaviour
             cardValues[i] = cardValues[j];
             cardValues[j] = value;
         }
+
+        // (currentIndex 就是當前索引)
+        currentIndex = 1;
+
     }
 
     public int DealCard(CardScript card)

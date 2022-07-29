@@ -40,11 +40,16 @@ public class GameManager : MonoBehaviour
         dealBtn.onClick.AddListener(() => DealClicked());
         hitBtn.onClick.AddListener(() => HitClicked());
         standBtn.onClick.AddListener(() => StandClicked());
+        betBtn.onClick.AddListener(() => BetClicked());
     }
 
     #region 遊戲進行派牌函式
     private void DealClicked()
     {
+        // 重置 回合，隱藏 文字，準備新局發牌
+        playerScript.ResetHand();
+        dealerScript.ResetHand();
+
         // 在發牌開始時隱藏發放手牌積分
         mainText.gameObject.SetActive(false);
         dealerScoreText.gameObject.SetActive(false);
@@ -66,9 +71,9 @@ public class GameManager : MonoBehaviour
         // 設定標準pot大小
         pot = 40;
 
-        betsText.text = pot.ToString();
-        // 玩家腳本.調整金幣(-20);
-        // cashText.text = playerScript.GetMoney().Tostring();
+        betsText.text = "Bets: $" + pot.ToString();
+        playerScript.AdjectMoney(-20);
+        cashText.text = "$" + playerScript.Getmoney().ToString();
     }
 
 
@@ -156,11 +161,21 @@ public class GameManager : MonoBehaviour
             mainText.gameObject.SetActive(true);
             dealerScoreText.gameObject.SetActive(true);
             hideCard.GetComponent<Renderer>().enabled = false;
-            cashText.text = playerScript.Getmoney().ToString();
+            cashText.text = "$" + playerScript.Getmoney().ToString();
             standClicks = 0;
         }
     }
-
     #endregion
+
+    // 如果點擊下注，則向檯面加錢
+    void BetClicked()
+    {
+        Text newBtn = betBtn.GetComponentInChildren(typeof(Text)) as Text;
+        int intBet = int.Parse(newBtn.text.ToString().Remove(0, 1));
+        playerScript.AdjectMoney(-intBet);
+        cashText.text = "$" + playerScript.Getmoney().ToString();
+        pot += (intBet * 2);
+        betsText.text = "Bets: $" + pot.ToString();
+    }
 }
 
