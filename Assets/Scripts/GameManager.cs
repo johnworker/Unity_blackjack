@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         standBtnText.text = "Stand";
 
         // 設定標準pot大小
-        pot = 40;
+        pot = 20;
 
         betsText.text = "Bets: $" + pot.ToString();
         playerScript.AdjustMoney(-20);
