@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI dealerScoreText;
     public TextMeshProUGUI betsText;
     public TextMeshProUGUI cashText;
-    // 公開 Text 主要文字
+    public TextMeshProUGUI mainText;
     public TextMeshProUGUI standBtnText;
 
     // 隱藏莊家第二張牌
@@ -109,7 +109,8 @@ public class GameManager : MonoBehaviour
         bool roundOver = true;
         if(playerBust && dealerBust)
         {
-            
+            mainText.text = "All Bust: Bets Returned";
+            playerScript.AdjectMoney(pot / 2);
         }
     }
 
