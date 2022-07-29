@@ -4402,7 +4402,7 @@ MonoBehaviour:
   m_text: text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3121b74ac08282f408b7d111e850930f, type: 2}
-  m_sharedMaterial: {fileID: 3479533945306069449, guid: 3121b74ac08282f408b7d111e850930f, type: 2}
+  m_sharedMaterial: {fileID: -8168590930322127767, guid: 3121b74ac08282f408b7d111e850930f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

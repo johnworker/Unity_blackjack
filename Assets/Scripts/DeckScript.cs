@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
-public class Deck : MonoBehaviour
+public class DeckScript : MonoBehaviour
 {
     public Sprite[] cardSprites;
     int[] cardValues = new int[53];

@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     // 取得其他腳本
     public CardScript cardScript;
-    public Deck deckScript;
+    public DeckScript deckScript;
 
     // 全部的數值取決於 玩家/莊家 的手牌
     public int handValue = 0;
@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
     }
 
     // 加或減錢，投注
-    public void AdjectMoney(int amount)
+    public void AdjustMoney(int amount)
     {
         money += amount;
     }

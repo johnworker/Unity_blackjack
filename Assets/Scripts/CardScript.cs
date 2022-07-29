@@ -30,7 +30,7 @@ public class CardScript : MonoBehaviour
 
     public void ResetCard()
     {
-        Sprite back = GameObject.Find("DeckController").GetComponent<Deck>().GetCardBack();
+        Sprite back = GameObject.Find("DeckController").GetComponent<DeckScript>().GetCardBack();
         gameObject.GetComponent<SpriteRenderer>().sprite = back;
         value = 0;
     }

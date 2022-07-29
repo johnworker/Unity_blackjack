@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Button hitBtn;
     public Button standBtn;
     public Button betBtn;
+
     private int standClicks = 0;
 
     // 訪問玩家和莊家的腳本
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
         // 在發牌開始時隱藏發放手牌積分
         mainText.gameObject.SetActive(false);
         dealerScoreText.gameObject.SetActive(false);
-        GameObject.Find("Deck").GetComponent<Deck>().shuffle();
+        GameObject.Find("Deck").GetComponent<DeckScript>().shuffle();
         playerScript.StartHand();
         dealerScript.StartHand();
 
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
         pot = 40;
 
         betsText.text = "Bets: $" + pot.ToString();
-        playerScript.AdjectMoney(-20);
+        playerScript.AdjustMoney(-20);
         cashText.text = "$" + playerScript.Getmoney().ToString();
     }
 
@@ -80,7 +81,7 @@ public class GameManager : MonoBehaviour
     private void HitClicked()
     {
         // 檢查桌子上是否還有空間
-        if (playerScript.GetCard() <= 10)
+        if (playerScript.cardIndex <= 10)
         {
             playerScript.GetCard();
             scoreText.text = "Hand: " + playerScript.handValue.ToString();
@@ -124,7 +125,7 @@ public class GameManager : MonoBehaviour
         if(playerBust && dealerBust)
         {
             mainText.text = "All Bust: Bets Returned";
-            playerScript.AdjectMoney(pot / 2);
+            playerScript.AdjustMoney(pot / 2);
         }
 
         // 如果玩家爆牌，莊家沒爆牌 或 如果莊家點數多於玩家 則莊家贏
@@ -136,15 +137,15 @@ public class GameManager : MonoBehaviour
         // 如果莊家爆牌，玩家沒爆牌 或 如果玩家點數多於莊家 則玩家贏
         else if (dealerBust || playerScript.handValue > dealerScript.handValue)
         {
-            mainText.text = "Dealer Wins";
-            playerScript.AdjectMoney(pot);
+            mainText.text = "You Wins";
+            playerScript.AdjustMoney(pot);
         }
 
         // 檢查是否平局，歸還賭本
         else if(playerScript.handValue == dealerScript.handValue)
         {
             mainText.text = "Push: Bets returned";
-            playerScript.AdjectMoney(pot / 2);
+            playerScript.AdjustMoney(pot / 2);
         }
 
         else
@@ -172,7 +173,7 @@ public class GameManager : MonoBehaviour
     {
         Text newBtn = betBtn.GetComponentInChildren(typeof(Text)) as Text;
         int intBet = int.Parse(newBtn.text.ToString().Remove(0, 1));
-        playerScript.AdjectMoney(-intBet);
+        playerScript.AdjustMoney(-intBet);
         cashText.text = "$" + playerScript.Getmoney().ToString();
         pot += (intBet * 2);
         betsText.text = "Bets: $" + pot.ToString();
