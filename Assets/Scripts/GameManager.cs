@@ -107,11 +107,28 @@ public class GameManager : MonoBehaviour
         // 如果經過被點擊的次數少於兩次，沒有 21點 或 爆牌，退出功能
         if (standClicks < 2 && !playerBust && !dealerBust && !player21 && !dealer21) return;
         bool roundOver = true;
+
+        // 爆牌，賭本全數回收
         if(playerBust && dealerBust)
         {
             mainText.text = "All Bust: Bets Returned";
             playerScript.AdjectMoney(pot / 2);
         }
+
+        // 如果玩家爆牌，莊家沒爆牌 或 如果莊家點數多於玩家 則莊家贏
+        else if(playerBust || dealerScript.handValue > playerScript.handValue)
+        {
+            mainText.text = "Dealer Wins";
+        }
+
+        // 如果莊家爆牌，玩家沒爆牌 或 如果玩家點數多於莊家 則玩家贏
+        else if (dealerBust || playerScript.handValue > dealerScript.handValue)
+        {
+            mainText.text = "Dealer Wins";
+            playerScript.AdjectMoney(pot);
+        }
+
+        // 檢查是否平局，歸還賭本
     }
 
     #endregion
